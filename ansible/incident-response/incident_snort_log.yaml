@@ -28,7 +28,6 @@
 
     - name: debug
       shell: ls -la /etc/sudo/sudo.conf
-      become: yes
       delegate_to: qradar
       
     - name: Add snort remote logging to QRadar
