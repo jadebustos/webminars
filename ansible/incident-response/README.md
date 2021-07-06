@@ -1,5 +1,7 @@
 # Incident response
 
+https://github.com/ansible/workshops/tree/devel/exercises/ansible_security
+
 ## Requirements
 
 ```console
