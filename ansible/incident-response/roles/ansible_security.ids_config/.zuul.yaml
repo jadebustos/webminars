@@ -1,0 +1,14 @@
+---
+- project:
+    check:
+      jobs:
+        - ansible-tox-linters
+        - ansible-tox-molecule:
+            required-projects:
+              - ansible-security/ids_install
+    gate:
+      jobs:
+        - ansible-tox-linters
+        - ansible-tox-molecule:
+            required-projects:
+              - ansible-security/ids_install
