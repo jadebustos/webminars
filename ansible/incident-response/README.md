@@ -7,6 +7,17 @@
 ...
 [student1@ansible-1 incident-response]$
 ```
+> In snort server we can see if attack was launched:
+>
+> ```console
+> 
+> ```
+
+```console
+[student1@ansible-1 incident-response]$ ansible-playbook add_snort_rule.yaml
+...
+[student1@ansible-1 incident-response]$ 
+```
 
 Go to checkpoint management server **SECURITY POLICIES** to to the policy named **asa-accept-...** and in the column **Track** change it to **Log**. After that **Publish** and **Install the policy**.
 
