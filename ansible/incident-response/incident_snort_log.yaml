@@ -22,9 +22,14 @@
     - ibm.qradar
 
   tasks:
+    - name: debug hostname
+      shell: hostname
+      delegate_to: qradar
+
     - name: debug
       shell: id ; ls -la /etc/sudo/sudo.conf
       become: yes
+      delegate_to: qradar
       
     - name: Add snort remote logging to QRadar
       qradar_log_source_management:
@@ -33,9 +38,11 @@
         state: present
         description: "Snort rsyslog source"
         identifier: "{{ hostvars['snort']['private_ip']|regex_replace('\\.','-')|regex_replace('^(.*)$', 'ip-\\1') }}"
+      delegate_to: qradar
 
     - name: deploy the new log sources
       qradar_deploy:
         type: INCREMENTAL
       failed_when: false
+      delegate_to: qradar
 
