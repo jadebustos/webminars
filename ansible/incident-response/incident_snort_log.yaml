@@ -24,6 +24,7 @@
   tasks:
     - name: debug
       shell: id ; ls -la /etc/sudo/sudo.conf
+      become: yes
       
     - name: Add snort remote logging to QRadar
       qradar_log_source_management:
