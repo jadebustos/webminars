@@ -13,12 +13,6 @@
 > 
 > ```
 
-```console
-[student1@ansible-1 incident-response]$ ansible-playbook add_snort_rule.yaml
-...
-[student1@ansible-1 incident-response]$ 
-```
-
 Go to checkpoint management server **SECURITY POLICIES** to to the policy named **asa-accept-...** and in the column **Track** change it to **Log**. After that **Publish** and **Install the policy**.
 
 Install the following collections:
@@ -43,7 +37,26 @@ Install the following collections:
 Process install dependency map
 Starting collection install process
 Installing 'ibm.qradar:1.0.3' to '/home/student1/.ansible/collections/ansible_collections/ibm/qradar'
-[student1@ansible-1 ~]$ 
+[student1@ansible-1 ~]$ ansible-galaxy install ansible_security.log_manager
+- downloading role 'log_manager', owned by ansible_security
+- downloading role from https://github.com/ansible-security/log_manager/archive/master.tar.gz
+- extracting ansible_security.log_manager to /home/student1/.ansible/roles/ansible_security.log_manager
+- ansible_security.log_manager (master) was installed successfully
+[student1@ansible-1 ~]$
+```
+
+```console
+[student1@ansible-1 incident-response]$ ansible-playbook add_snort_rule.yaml
+...
+[student1@ansible-1 incident-response]$ 
+```
+
+Add logs sources to qradar:
+
+```console
+[student1@ansible-1 incident-response]$ ansible-playbook enrich_log_sources.yaml 
+...
+[student1@ansible-1 incident-response]$
 ```
 
 ## Preparations
@@ -79,5 +92,16 @@ Sends logs to Qradar:
 ```console
 [student1@ansible-1 incident-response]$ ansible-playbook incident_snort_log.yaml
 ...
+[student1@ansible-1 incident-response]$
+```
+
+## Rollback
+
+```console
+[student1@ansible-1 incident-response]$ ansible-playbook rollback.yaml
+...
+[student1@ansible-1 incident-response]$ ansible attacker -b -m shell -e "{'ansible_user': 'ec2-user'}" -a "sleep 2;ps -ef | grep -v grep | grep -w /usr/bin/watch | awk '{print $2}'|xargs kill &>/dev/null; sleep 2"
+attacker | CHANGED | rc=0 >>
+
 [student1@ansible-1 incident-response]$
 ```
