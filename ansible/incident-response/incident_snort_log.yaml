@@ -27,7 +27,7 @@
       delegate_to: qradar
 
     - name: debug
-      shell: id ; ls -la /etc/sudo/sudo.conf
+      shell: ls -la /etc/sudo/sudo.conf
       become: yes
       delegate_to: qradar
       
