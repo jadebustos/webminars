@@ -1,5 +1,30 @@
 # Incident response
 
+## Requirements
+
+```console
+[student1@ansible-1 incident-response]$ ansible-playbook whitelist_attacker.yaml 
+...
+[student1@ansible-1 incident-response]$
+```
+
+Go to checkpoint management server **SECURITY POLICIES** to to the policy named **asa-accept-...** and in the column **Track** change it to **Log**. After that **Publish** and **Install the policy**.
+
+Install the following collections:
+
+```console
+[student1@ansible-1 ~]$ ansible-galaxy install ansible_security.ids_rule
+- downloading role 'ids_rule', owned by ansible_security
+- downloading role from https://github.com/ansible-security/ids_rule/archive/master.tar.gz
+- extracting ansible_security.ids_rule to /home/student1/.ansible/roles/ansible_security.ids_rule
+- ansible_security.ids_rule (master) was installed successfully
+[student1@ansible-1 ~]$
+```
+
+
+
+
+
 Lab has to meet requirements according to its guide.
 
 Add snort rule:
