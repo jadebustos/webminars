@@ -22,6 +22,9 @@
     - ibm.qradar
 
   tasks:
+    - name: debug
+      shell: id ; ls -la /etc/sudo/sudo.conf
+      
     - name: Add snort remote logging to QRadar
       qradar_log_source_management:
         name: "Snort rsyslog source - {{ hostvars['snort']['private_ip'] }}"
