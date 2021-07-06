@@ -38,7 +38,7 @@
         tasks_from: unforward_logs_to_syslog
       vars:
         syslog_server: "{{ hostvars['qradar']['private_ip'] }}"
-        checkpoint_server_name: "gw-9431b3"
+        checkpoint_server_name: "gw-cffe80"
         firewall_provider: checkpoint
 
 - name: Remove Check Point log source from QRadar
@@ -59,4 +59,3 @@
       qradar_deploy:
         type: INCREMENTAL
       failed_when: false
-

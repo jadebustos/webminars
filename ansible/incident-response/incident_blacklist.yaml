@@ -33,4 +33,3 @@
         policy_package: standard
         install_on_all_cluster_members_or_fail: yes
       failed_when: false
-

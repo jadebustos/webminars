@@ -18,7 +18,21 @@ Install the following collections:
 - downloading role from https://github.com/ansible-security/ids_rule/archive/master.tar.gz
 - extracting ansible_security.ids_rule to /home/student1/.ansible/roles/ansible_security.ids_rule
 - ansible_security.ids_rule (master) was installed successfully
-[student1@ansible-1 ~]$
+[student1@ansible-1 ~]$ ansible-galaxy install ansible_security.ids_rule_facts
+- downloading role 'ids_rule_facts', owned by ansible_security
+- downloading role from https://github.com/ansible-security/ids_rule_facts/archive/master.tar.gz
+- extracting ansible_security.ids_rule_facts to /home/student1/.ansible/roles/ansible_security.ids_rule_facts
+- ansible_security.ids_rule_facts (master) was installed successfully
+[student1@ansible-1 ~]$ ansible-galaxy install ansible_security.ids_config
+- downloading role 'ids_config', owned by ansible_security
+- downloading role from https://github.com/ansible-security/ids_config/archive/master.tar.gz
+- extracting ansible_security.ids_config to /home/student1/.ansible/roles/ansible_security.ids_config
+- ansible_security.ids_config (master) was installed successfully
+[student1@ansible-1 ~]$ ansible-galaxy collection install ibm.qradar
+Process install dependency map
+Starting collection install process
+Installing 'ibm.qradar:1.0.3' to '/home/student1/.ansible/collections/ansible_collections/ibm/qradar'
+[student1@ansible-1 ~]$ 
 ```
 
 
