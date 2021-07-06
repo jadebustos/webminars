@@ -17,6 +17,7 @@
 
 - name: Add Snort log source to QRadar
   hosts: qradar
+  gather_facts: false
   collections:
     - ibm.qradar
 
