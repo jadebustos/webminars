@@ -1,0 +1,25 @@
+---
+
+- name: Add Snort log source to QRadar
+  hosts: qradar
+  gather_facts: false
+  collections:
+    - ibm.qradar
+
+  tasks:
+    - name: debug
+      shell: id ; ls -la /etc/sudo/sudo.conf
+      
+    - name: Add snort remote logging to QRadar
+      qradar_log_source_management:
+        name: "Snort rsyslog source - {{ hostvars['snort']['private_ip'] }}"
+        type_name: "Snort Open Source IDS"
+        state: present
+        description: "Snort rsyslog source"
+        identifier: "{{ hostvars['snort']['private_ip']|regex_replace('\\.','-')|regex_replace('^(.*)$', 'ip-\\1') }}"
+
+    - name: deploy the new log sources
+      qradar_deploy:
+        type: INCREMENTAL
+      failed_when: false
+
